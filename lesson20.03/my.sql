@@ -107,3 +107,14 @@ db.tracks.find(
 db.tracks.find(
     { tags: { $all: ['andrei', 'test1'] } }
 )
+
+
+//Задача. Вывести все треки с тегом super и продолжительностью до одного часа
+db.tracks.find(
+    { tags: 'super', duration_secs: { $lte: 60 * 60 } }
+)
+
+//Задача. Вывести все треки без тегом super и продолжительностью до одного часа (вкл.)
+db.tracks.find(
+    { tags: { $ne: 'super' }, duration_secs: { $lte: 60 * 60 } }
+)
