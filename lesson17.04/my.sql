@@ -270,3 +270,23 @@ db.users.aggregate([
         }
     }
 ])
+
+//Задача. Вывести страны, в которых ко-во юзеров от 10 до 20 (вкл.)
+
+db.users.aggregate([
+    {
+        $group: {
+            _id: '$country',
+            total: { $count: {} }
+        }
+    },
+    {
+        $match: {
+            total: {
+                $gte: 10,
+                $lte: 20
+            }
+        }
+    }
+])
+
